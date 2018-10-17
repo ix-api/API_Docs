@@ -17,10 +17,10 @@
 ## 签名格式
 PHP：
 ``` PHP
+$url = "https://api.ix.com/order/active";
 $req['nonce'] = time();
 $post_data = http_build_query($req, '', '&');
 $sign = hash('sha256', urldecode($post_data).$secret);
-$url = "https://api.ix.com/order/active";
 $headers = ['Content-Type' => 'application/json', 'key' => $key, 'sign' => $sign];
 $data = ['nonce' => $nonce, 'symbol' => $symbol, 'page' => $page, 'size' => $size];
 $response = Requests::post($url, $headers, json_encode($data));
@@ -28,10 +28,11 @@ $response = Requests::post($url, $headers, json_encode($data));
 
 JavaScript：
 ``` JavaScript
+let url = "https://api.ix.com/order/active";
 let nonce = Math.floor(Date.now() / 1000)
 let sign = sha256("nonce="+ nonce + "&symbol=" + symbol + "&page=" + page + "&size=" + size + api_secret)
 $.ajax({
-  url: "https://api.ix.com/order/active",
+  url: url,
   type: 'post',
   data: {
     nonce: nonce,
