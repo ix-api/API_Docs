@@ -44,6 +44,7 @@ $.ajax({
     key: api_key,
     sign: sign
   },
+  ...
 ```
 
 
