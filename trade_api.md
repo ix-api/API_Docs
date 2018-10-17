@@ -15,11 +15,20 @@
 **_注意： 请勿向任何人泄露这两个参数，这两个参数关乎您账号的安全。_**    
 
 ## 签名格式
-```
+PHP：
+``` PHP
 $req['nonce'] = time();
 $post_data = http_build_query($req, '', '&');
 $sign = hash('sha256', urldecode($post_data).$secret);
 ```
+
+JavaScript：
+``` JavaScript
+$req['nonce'] = time();
+$post_data = http_build_query($req, '', '&');
+$sign = hash('sha256', urldecode($post_data).$secret);
+```
+
 
 ## 状态码
 
