@@ -4,7 +4,8 @@
 
 - 所有交易API请求都使用HTTP POST
 - 交易API需要在官网申请API需要的key/secret
-- 请求的header里添加key/sign，sign=hash('sha256', $post_data.$secret);
+- 请求的header里添加version = '2.0'
+- 请求的header里添加key/sign，sign=hash('sha256', $post_data.$secret)
 - 请求都nonce参数为当前系统时间戳，单位为秒，nonce不早/晚于当前系统时间10秒
 - 访问频率最快为100ms间隔
 
@@ -21,7 +22,7 @@ $url = "https://api.ix.com/order/active";
 $req['nonce'] = time();
 $post_data = http_build_query($req, '', '&');
 $sign = hash('sha256', urldecode($post_data).$secret);
-$headers = ['Content-Type' => 'application/json', 'key' => $key, 'sign' => $sign];
+$headers = ['Content-Type' => 'application/json', 'version'=> '2.0', 'key' => $key, 'sign' => $sign];
 $data = ['nonce' => $nonce, 'symbol' => $symbol, 'page' => $page, 'size' => $size];
 $response = Requests::post($url, $headers, json_encode($data));
 ```
@@ -41,6 +42,7 @@ $.ajax({
     size: 100
   },
   headers: {
+    version: '2.0',
     key: api_key,
     sign: sign
   },
