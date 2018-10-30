@@ -19,12 +19,12 @@
 PHP：
 ``` PHP
 $url = "https://api.ix.com/order/active";
-$req['nonce'] = time();
-$post_data = http_build_query($req, '', '&');
-$sign = hash('sha256', urldecode($post_data).$secret);
+$nonce = time();
+$payload = ['nonce' => $nonce, 'symbol' => $symbol, 'page' => $page, 'size' => $size];
+$payload_str = http_build_query($payload, '', '&');
+$sign = hash('sha256', urldecode($payload_str).$secret);
 $headers = ['Content-Type' => 'application/json', 'version'=> '2.0', 'key' => $key, 'sign' => $sign];
-$data = ['nonce' => $nonce, 'symbol' => $symbol, 'page' => $page, 'size' => $size];
-$response = Requests::post($url, $headers, json_encode($data));
+$response = Requests::post($url, $headers, json_encode($payload));
 ```
 
 JavaScript：
