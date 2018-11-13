@@ -17,7 +17,7 @@
 
 ## 代码示例
 Python：
-```
+``` Python
 import requests
 import hashlib
 import json
