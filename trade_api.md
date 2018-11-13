@@ -22,6 +22,7 @@ import requests
 import hashlib
 import json
 import time
+from urllib import parse
 
 key = 'your key'
 secret = 'your secret'
@@ -29,7 +30,7 @@ url = "https://api.ix.com/order/active"
 symbol = 'BTC_USDT'
 nonce = int(time.time())
 payload = {'nonce': nonce, 'symbol': symbol, 'page': 1, 'size': 10}
-payload_str = 'nonce='+str(nonce)+'&symbol='+symbol+'&page=1&size=10'
+payload_str = parse.urlencode(payload)
 sign = hashlib.sha256((payload_str+secret).encode("utf-8")).hexdigest()
 headers = {'Content-Type': 'application/json', 'version': '2.0', 'key': key, 'sign': sign}
 response = requests.post(url, data=json.dumps(payload), headers=headers)
