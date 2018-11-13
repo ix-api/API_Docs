@@ -16,11 +16,33 @@
 **_注意： 请勿向任何人泄露这两个参数，这两个参数关乎您账号的安全。_**    
 
 ## 代码示例
+Python：
+```
+import requests
+import hashlib
+import json
+import time
+
+key = 'your key'
+secret = 'your secret'
+url = "https://api.ix.com/order/active"
+symbol = 'BTC_USDT'
+nonce = int(time.time())
+payload = {'nonce': nonce, 'symbol': symbol, 'page': 1, 'size': 10}
+payload_str = 'nonce='+str(nonce)+'&symbol='+symbol+'&page=1&size=10'
+sign = hashlib.sha256((payload_str+secret).encode("utf-8")).hexdigest()
+headers = {'Content-Type': 'application/json', 'version': '2.0', 'key': key, 'sign': sign}
+response = requests.post(url, data=json.dumps(payload), headers=headers)
+```
+
 PHP：
 ``` PHP
+$key = 'your key'
+$secret = 'your secret'
 $url = "https://api.ix.com/order/active";
+$symbol = 'BTC_USDT';
 $nonce = time();
-$payload = ['nonce' => $nonce, 'symbol' => $symbol, 'page' => $page, 'size' => $size];
+$payload = ['nonce' => $nonce, 'symbol' => $symbol, 'page' => 1, 'size' => 10];
 $payload_str = http_build_query($payload, '', '&');
 $sign = hash('sha256', urldecode($payload_str).$secret);
 $headers = ['Content-Type' => 'application/json', 'version'=> '2.0', 'key' => $key, 'sign' => $sign];
@@ -29,9 +51,12 @@ $response = Requests::post($url, $headers, json_encode($payload));
 
 JavaScript：
 ``` JavaScript
-let url = "https://api.ix.com/order/active";
+let key = 'your key'
+let secret = 'your secret'
+let url = "https://api.ix.com/order/active"
+let symbol = 'BTC_USDT'
 let nonce = Math.floor(Date.now() / 1000)
-let sign = sha256("nonce="+ nonce + "&symbol=" + symbol + "&page=" + page + "&size=" + size + api_secret)
+let sign = sha256("nonce="+ nonce + "&symbol=" + symbol + "&page=" + 1 + "&size=" + 10 + secret)
 $.ajax({
   url: url,
   type: 'post',
@@ -39,11 +64,11 @@ $.ajax({
     nonce: nonce,
     symbol: symbol,
     page: 1,
-    size: 100
+    size: 10
   },
   headers: {
     version: '2.0',
-    key: api_key,
+    key: key,
     sign: sign
   },
   ...
