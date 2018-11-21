@@ -115,7 +115,7 @@ $.ajax({
   - state 状态 1上线 2下线
 - 示例
 ```
-curl -H 'key: xxx' -H 'sign: yyy' -X POST https://api.ix.com/symbol/list -d 'nonce=1536826456'
+curl -H 'key: xxx' -H 'sign: yyy' -H 'version: 2.0' -X POST https://api.ix.com/symbol/list -d 'nonce=1536826456'
 ```
 
 ## 获取余额列表 POST /balance/list
@@ -136,7 +136,7 @@ curl -H 'key: xxx' -H 'sign: yyy' -X POST https://api.ix.com/symbol/list -d 'non
   - rates 币种对各法币汇率 
 - 示例
 ```
-curl -H 'key: xxx' -H 'sign: yyy' -X POST https://api.ix.com/balance/list -d 'nonce=1536826456'
+curl -H 'key: xxx' -H 'sign: yyy' -H 'version: 2.0' -X POST https://api.ix.com/balance/list -d 'nonce=1536826456'
 ```
 
 ## 下单 POST /order/create
@@ -163,7 +163,7 @@ curl -H 'key: xxx' -H 'sign: yyy' -X POST https://api.ix.com/balance/list -d 'no
   - locked 市价买时的锁定额
 - 示例
 ```
-curl -H 'key: xxx' -H 'sign: yyy' -X POST https://api.ix.com/order/create -d 'nonce=1536826456&symbol=BTC_USDT&side=1&type=1&price=6000&amount=1'
+curl -H 'key: xxx' -H 'sign: yyy' -H 'version: 2.0' -X POST https://api.ix.com/order/create -d 'nonce=1536826456&symbol=BTC_USDT&side=1&type=1&price=6000&amount=1'
 ```
 
 ## 撤单 POST /order/remove
@@ -177,7 +177,7 @@ curl -H 'key: xxx' -H 'sign: yyy' -X POST https://api.ix.com/order/create -d 'no
   - message
 - 示例
 ```
-curl -H 'key: xxx' -H 'sign: yyy' -X POST https://api.ix.com/order/remove -d 'nonce=1536826456&symbol=BTC_USDT&order_id=123'
+curl -H 'key: xxx' -H 'sign: yyy' -H 'version: 2.0' -X POST https://api.ix.com/order/remove -d 'nonce=1536826456&symbol=BTC_USDT&order_id=123'
 ```
 
 ## 查询委托 POST /order/active
@@ -209,7 +209,7 @@ curl -H 'key: xxx' -H 'sign: yyy' -X POST https://api.ix.com/order/remove -d 'no
   - update_time 最近成交时间
 - 示例
 ```
-curl -H 'key: xxx' -H 'sign: yyy' -X POST https://api.ix.com/order/active -d 'nonce=1536826456&symbol=BTC_USDT&page=1&size=10'
+curl -H 'key: xxx' -H 'sign: yyy' -H 'version: 2.0' -X POST https://api.ix.com/order/active -d 'nonce=1536826456&symbol=BTC_USDT&page=1&size=10'
 ```
 
 ## 历史订单 POST /order/history
@@ -240,7 +240,7 @@ curl -H 'key: xxx' -H 'sign: yyy' -X POST https://api.ix.com/order/active -d 'no
   - create_time 下单时间
   - update_time 最近成交时间
 ```
-curl -H 'key: xxx' -H 'sign: yyy' -X POST https://api.ix.com/order/history -d 'nonce=1536826456&page=1&size=10'
+curl -H 'key: xxx' -H 'sign: yyy' -H 'version: 2.0' -X POST https://api.ix.com/order/history -d 'nonce=1536826456&page=1&size=10'
 ```
 
 ### 查询活跃委托订单详情 POST /order/query
@@ -271,5 +271,5 @@ curl -H 'key: xxx' -H 'sign: yyy' -X POST https://api.ix.com/order/history -d 'n
   - create_time 下单时间
   - update_time 最近成交时间
 ```
-curl -H 'key: xxx' -H 'sign: yyy' -X POST https://api.ix.com/order/query -d 'nonce=1536826456&symbol=BTC_USDT&order_id=123'
+curl -H 'key: xxx' -H 'sign: yyy' -H 'version: 2.0' -X POST https://api.ix.com/order/query -d 'nonce=1536826456&symbol=BTC_USDT&order_id=123'
 ```
