@@ -1,8 +1,11 @@
 ## API概述
 IX API为用户提供了一套简单而强大的开发工具，帮助用户将交易和行情功能整合到自己的应用中。
 
-## 交易API
+## 币币交易API
 [trade_api.md](./trade_api.md)
+
+## 合约交易API
+[future_api.md](./future_api.md)
 
 ## 行情和盘口API
 
